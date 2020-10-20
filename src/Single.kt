@@ -2,7 +2,8 @@ package org.kotlinlang.play
 
 class Single(
     id: Int, gender: Gender, name: String, address: String, birthDay: String, toraHours: Int, workHours: Int,
-    income: Int, volunteer: VolunteerType, yearsOfEducation: Int):CommunityMember(id, gender, name, address, birthDay, toraHours, workHours, income, volunteer) {
+    income: Int, volunteer: VolunteerType, yearsOfEducation: Int
+) : CommunityMember(id, gender, name, address, birthDay, toraHours, workHours, income, volunteer) {
 
     var yearsOfEducation: Int = 0
         private set(value) {
@@ -10,13 +11,13 @@ class Single(
             field = value
         }
 
-    init{
-        this.yearsOfEducation=yearsOfEducation
+    init {
+        this.yearsOfEducation = yearsOfEducation
     }
 
     override fun taxVal(): Int {
         val tax = 400 - 10 * toraHours - 5 * workHours
-        if (tax > 0) return (tax) else return (0)
+        return if (tax > 0) (tax) else (0)
     }
 
     override fun gmachVal(): Int {
@@ -24,9 +25,9 @@ class Single(
     }
 
     override fun volunteeringHours(): Int {
-        val hours=50-toraHours-workHours
-        if(hours>5) return (5)
-            else if (hours<0) return 0 else return  hours
+        val hours = 50 - toraHours - workHours
+        return if (hours > 5) (5)
+        else if (hours < 0) 0 else hours
     }
 
 }

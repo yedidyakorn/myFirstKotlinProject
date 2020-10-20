@@ -1,8 +1,5 @@
 package org.kotlinlang.play
 
-import java.lang.IllegalStateException
-import kotlin.IllegalArgumentException
-
 //abstract object of a Community Member
 abstract class CommunityMember(
     id: Int,
@@ -61,15 +58,15 @@ abstract class CommunityMember(
         this.income = income
         this.workHours = workHours
         this.toraHours = toraHours
-        if(workHours+toraHours<28||toraHours<7)
-            throw IllegalArgumentException("the member is a BATLAN and is rejected from community")
+        if (workHours + toraHours < 28 || toraHours < 7)
+            throw Exception("the member is a BATLAN and is rejected from community")
     }
 
-    abstract override fun gmachVal() :Int
+    abstract override fun gmachVal(): Int
 
     abstract override fun taxVal(): Int
 
-    abstract override fun volunteeringHours():Int
+    abstract override fun volunteeringHours(): Int
 
     override fun toString(): String {
         return ("$name, $id \t ")
